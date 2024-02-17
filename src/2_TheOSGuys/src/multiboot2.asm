@@ -43,3 +43,5 @@ section .bss
 stack_bottom:
     resb 4096 * 16
 stack_top:
+
+

@@ -5,18 +5,16 @@
 
 
 
-struct multiboot_info {
+struct CustomBootInfo {
     uint32_t size;
     uint32_t reserved;
-    struct multiboot_tag *first;
+    struct multiboot_tag *first_tag;
 };
 
-int kernel_main();
+int custom_kernel_main();
 
-
-int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
-
-
-    // Call cpp kernel_main (defined in kernel.cpp)
-    return kernel_main();
+// Hovedfunksjon for oppstart, bruker det nye strukturnavnet
+int main(uint32_t magic, struct CustomBootInfo *boot_info) {
+    // Kall til den tilpassede hovedfunksjonen for kjerne
+    return custom_kernel_main();
 }
