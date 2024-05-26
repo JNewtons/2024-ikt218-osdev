@@ -31,15 +31,21 @@ extern uint32_t end;
 int kernel_main_c(uint32_t magic, struct multiboot_info* mb_info_addr) {
     // Initialize the monitor (screen output)
     monitor_initialize();
+
+    
+    // Print a hello world message.
+    printf("Hello World!\n");
   
     // Initialize the Global Descriptor Table (GDT).
     init_gdt();
 
     // Initialize the Interrupt Descriptor Table (IDT).
     init_idt();
+      
 
     // Initialize the hardware interrupts.
     init_irq();
+  
 
     // Initialize the kernel's memory manager using the end address of the kernel.
     init_kernel_memory(&end);
@@ -52,8 +58,6 @@ int kernel_main_c(uint32_t magic, struct multiboot_info* mb_info_addr) {
 
     init_pit();
 
-    // Print a hello world message.
-    printf("Hello World!\n");
 
     // Call the C++ main function of the kernel.
     return kernel_main();
